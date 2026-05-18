@@ -35,7 +35,7 @@ Before deploying to Railway, verify all of the following:
    - `REPLIT_OBJECT_STORAGE_BUCKET_ID` (required on Railway if you are using your own Replit Object Storage bucket)
 
 3. **Install dependencies**
-   - Railway must install `requirements.txt` (includes `discord-py`, `deepl`, `replit`, `replit-object-storage`, etc.)
+   - Railway must install `requirements.txt` (includes `discord.py`, `deepl`, `replit`, `replit-object-storage`, etc.)
 
 4. **Configure object storage**
    - The bot persists state in object storage keys such as:
