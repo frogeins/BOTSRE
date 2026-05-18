@@ -32,7 +32,7 @@ Before deploying to Railway, verify all of the following:
    - `DISCORD_KEY`
    - `DEEPL_KEY`
    - `SID`
-   - `REPLIT_OBJECT_STORAGE_BUCKET_ID` (optional; set when not using the default Replit bucket ID)
+   - `REPLIT_OBJECT_STORAGE_BUCKET_ID` (required on Railway if you are using your own Replit Object Storage bucket)
 
 3. **Install dependencies**
    - Railway must install `requirements.txt` (includes `discord-py`, `deepl`, `replit`, `replit-object-storage`, etc.)
@@ -43,7 +43,9 @@ Before deploying to Railway, verify all of the following:
      - `SESSIONS.json`
      - `BILLING.json`
      - `PREFERENCES/...`
-   - Ensure compatible Replit Object Storage access from Railway or migrate this storage layer to Railway-compatible storage before production use.
+   - Railway does not provide Replit Object Storage natively. You must either:
+     - provide valid Replit Object Storage credentials + `REPLIT_OBJECT_STORAGE_BUCKET_ID` for a Replit bucket your bot can access, or
+     - replace `replit.object_storage` usage with a Railway-compatible backend (for example, S3-compatible storage or a database) before production deployment.
 
 5. **Set process start command**
    - Use `python3 BotScript.py` (included via `Procfile` as `worker: python3 BotScript.py`)
