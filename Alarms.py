@@ -1,13 +1,16 @@
 #Alarms.py
 import asyncio
 import json
+import os
 
 import discord
 from replit.object_storage import Client
 
 from SQ_Info import fetch_squadron_info
 
-client = Client()
+DEFAULT_BUCKET_ID = "replit-objstore-b5261a8a-c768-4543-975e-dfce1cd7077d"
+OBJECT_STORAGE_BUCKET_ID = os.environ.get("REPLIT_OBJECT_STORAGE_BUCKET_ID", DEFAULT_BUCKET_ID)
+client = Client(bucket_id=OBJECT_STORAGE_BUCKET_ID) if OBJECT_STORAGE_BUCKET_ID else Client()
 # Function to take a snapshot of the members and their scores
 async def take_snapshot(squadron_name):
     snapshot = await fetch_squadron_info(squadron_name)

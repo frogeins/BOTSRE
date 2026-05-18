@@ -37,7 +37,9 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("hpack").setLevel(logging.WARNING)
 logging.getLogger("deepl").setLevel(logging.WARNING)
 
-client = Client(bucket_id="replit-objstore-b5261a8a-c768-4543-975e-dfce1cd7077d")
+DEFAULT_BUCKET_ID = "replit-objstore-b5261a8a-c768-4543-975e-dfce1cd7077d"
+OBJECT_STORAGE_BUCKET_ID = os.environ.get("REPLIT_OBJECT_STORAGE_BUCKET_ID", DEFAULT_BUCKET_ID)
+client = Client(bucket_id=OBJECT_STORAGE_BUCKET_ID) if OBJECT_STORAGE_BUCKET_ID else Client()
 TOKEN = os.environ.get('DISCORD_KEY')
 
 intents = discord.Intents.default()
