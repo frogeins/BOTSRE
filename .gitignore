@@ -16,6 +16,7 @@ Parse_Replay.py
 Scoreboard.py
 SQ_Info.py
 TEST*
-
+__pycache__/
+*.pyc
 
 
